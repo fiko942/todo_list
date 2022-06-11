@@ -54,7 +54,18 @@ body, html {
     padding: 8px;
     border-radius: 50%;
     cursor: pointer;
-    transition: 0.2s ease-in-out all;
+}
+
+.header .nav button:hover:before {
+    display: flex;
+    content: '';
+    background: #000;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    position: absolute;
+    margin-top: -3px;
+    margin-left: -3px;
 }
 
 .header .nav button.min {

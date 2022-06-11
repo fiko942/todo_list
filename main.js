@@ -11,6 +11,7 @@ let win;
 
 function createWindow () {
   win = new BrowserWindow({
+    frame: false,
     width: 800,
     height: 600,
     webPreferences: {
@@ -18,7 +19,6 @@ function createWindow () {
       nodeIntegration: true
     }
   });
-  win.setAutoHideMenuBar(true);
   win.loadFile('page/main.html');
 }
 
