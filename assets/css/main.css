@@ -1,0 +1,70 @@
+:root {
+    --color-bg: #E9E9EB;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body, html {
+    background: var(--color-bg);
+    overflow-x: hidden !important;
+}
+
+.header {
+    display: flex;
+    background: #C9CACC;
+    align-items: center;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px #000;
+}
+
+.header .appname {
+    display: flex;
+    font-weight: 600;
+    font-size: 20px;
+    width: fit-content;
+    height: fit-content;
+    margin: 0;
+    margin-left: 20px;
+    color: #000;
+}
+
+.header .nav {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.header .nav button:not(:last-child) {
+    margin-right: 5px;
+}
+
+.header .nav button {
+    outline: none !important;
+    border: none !important;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s ease-in-out all;
+}
+
+.header .nav button.min {
+    background: #00C400;
+}
+
+.header .nav button.max {
+    background: #F8B100;
+}
+
+.header .nav button.close {
+    background: #FB0000;
+}

@@ -2,7 +2,8 @@
 const {
   app,
   BrowserWindow,
-  ipcMain
+  ipcMain,
+  remote
 } = require('electron');
 const ipc = ipcMain;
 const path = require('path');
@@ -18,8 +19,7 @@ function createWindow () {
     }
   });
   win.setAutoHideMenuBar(true);
-  win.menuBarVisible(false);
-  win.loadFile('page/login.html');
+  win.loadFile('page/main.html');
 }
 
 app.whenReady().then(() => {
@@ -46,3 +46,25 @@ require('electron-reload')(__dirname, {
 function loadFile(filePath) {
   return win.loadFile(filePath);
 }
+
+ipc.on('minimize-app', () => {
+  if(win.isMinimized()) {
+    win.restore();
+  } else {
+    win.minimize();
+  }
+});
+
+ipc.on('maximize-app', () => {
+  if(win.isMaximized()) {
+    win.unmaximize();
+  } else {
+    win.maximize();
+  }
+});
+
+ipc.on('close-app', () => {
+  if(process.platform !== 'darwin') {
+    app.quit();
+  }
+});
