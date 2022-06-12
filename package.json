@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "electron-reload": "^2.0.0-alpha.1",
+    "electron-settings": "^4.0.2",
     "jquery": "^3.6.0"
   }
 }
