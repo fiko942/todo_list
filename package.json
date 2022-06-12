@@ -20,6 +20,7 @@
     "electron": "^19.0.4"
   },
   "dependencies": {
-    "electron-reload": "^2.0.0-alpha.1"
+    "electron-reload": "^2.0.0-alpha.1",
+    "jquery": "^3.6.0"
   }
 }

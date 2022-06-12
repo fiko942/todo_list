@@ -116,8 +116,6 @@ button.hover,
 button.visited {
     box-shadow: unset !important;
     outline: 0 !important;
-    background: unset !important;
-    border-color: unset !important;
 }
 
 .header {
@@ -132,6 +130,7 @@ button.visited {
     overflow: hidden;
     box-shadow: 0px 0px 5px #000;
     -webkit-app-region: drag;
+    z-index: 999;
 }
 
 .header .appname {
@@ -163,9 +162,10 @@ button.visited {
     padding: 8px;
     border-radius: 50%;
     cursor: pointer;
+    z-index: 999999;
 }
 
-.header .nav button:hover:before {
+.header .nav button:hover::after {
     display: flex;
     content: '';
     background: #000;
@@ -175,20 +175,24 @@ button.visited {
     position: absolute;
     margin-top: -3px;
     margin-left: -3px;
+    z-index: 1;
 }
 
 .header .nav button.min {
     background: #00C400;
+    color: #00C400;
     -webkit-app-region: no-drag;
 }
 
 .header .nav button.max {
     background: #F8B100;
+    color: #F8B100;
     -webkit-app-region: no-drag;
 }
 
 .header .nav button.close {
     background: #FB0000;
+    color: #FB0000;
     -webkit-app-region: no-drag;
 }
 
@@ -308,15 +312,92 @@ button.visited {
     background-repeat: no-repeat;
     padding: 10px 20px;
     overflow: hidden;
+    box-shadow: 2px 2px 2px #CDCDCD;
 }
 
 .tasks .head .t-name {
     color: #fff;
     font-weight: 600;
+    max-width: 100%;
 }
 
+.tasks .data {
+    background: #FFFFFF;
+    max-height: 60vh;
+    overflow-x: hidden;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 2px 2px 2px #CDCDCD;
+}
 
+.tasks .data .list::before {
+    display: flex;
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 2px solid gray;
+}
 
+.tasks .data .list {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.tasks .data .list:not(:last-child) {
+    border-bottom: 1px solid #CDCDCD;
+}
+
+.tasks .data .list .title {
+    font-family: cursive;
+    font-size: 17px;
+    margin-left: 20px;
+    max-width: 100%;
+}
+
+.tasks .data .list.active {
+    background: #F0F0F0;
+}
+
+.tasks .data .list:hover {
+    background: #F0F0F0;
+}
+
+.tasks .data .list .date {
+    color: #878789;
+    font-size: 13px;
+    margin-left: 25px;
+    margin-toP: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.tasks .data .list .date span {
+    margin-left: 3px;
+}
+
+.tasks .data .list .date i:not(:last-child) {
+    margin-left: 5px;
+}
+
+.add-task {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    width: fit-content;
+    color: #4F3BFF;
+    margin-left: 10px;
+    font-weight: 600;
+    margin-top: 10px;
+}
 
 
 
@@ -325,5 +406,50 @@ button.visited {
 
 
 .detail {
-    padding: 10px;
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #CDCDCD;
+    margin-bottom: 2px;
+    height: 80vh;
+    padding: 15px 30px;
+    overflow-x: hidden;
+}
+
+.detail textarea {
+    width: 100%;
+    height: 60%;
+    outline: none !important;
+    border: none !important;
+    margin-top: 15px;
+}
+
+.save-detail {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 0;
+    border-radius: 10px;
+    outline: none !important;
+    border: none;
+    padding: 3px 10px;
+    font-size: 20px;
+    background: #006FF5;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    transition: 0.2s ease-in-out all;
+}
+
+.save-detail i {
+    margin-right: 5px;
+}
+
+.save-detail:hover,
+.save-detail:active,
+.save-detail:visited,
+.save-detail.active,
+.save-detail.visited {
+    box-shadow: 2px 2px 2px #343a40 !important;
+    background: #006FF4 !important;
 }

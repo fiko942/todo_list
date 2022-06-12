@@ -1,5 +1,7 @@
 const {ipcRenderer} = require('electron');
 const ipc = ipcRenderer;
+window.$ = window.jQuery = require('jquery');
+// window.$ = window.jQuery = require('./jquery-3.0.0.min.js');
 
 const el = (q) => {
     return document.querySelector(q);
@@ -22,4 +24,8 @@ el('.nav .max').addEventListener('click', (e) => {
 el('.nav .close').addEventListener('click', (e) => {
     e.preventDefault();
     ipc.send('close-app');
+});
+
+$('.add-list-btn').on('click', (e) => {
+    
 });

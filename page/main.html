@@ -70,8 +70,23 @@
                 <div class="head d-flex align-items-center">
                     <div class="t-name fs-4 font-monospace">Meeting</div>
                 </div>
+                <div class="data">
+                    <div class="list">
+                        <div class="title">Ngent0d</div>
+                        <div class="date"><i class='bx bx-calendar' ></i><span>26-09-2004</span><i class='bx bxs-watch'></i><span>12:00</span></div>
+                    </div>
+                </div>
+                <div class="add-task d-flex align-items-center">
+                    <i class='bx bx-plus icon' ></i>
+                    <span>New task</span>
+                </div>
             </div>
-            <div class="col-lg-4 detail bg-danger"></div>
+            <div class="col-lg-4 detail">
+                <input type="date" class="form-control" name="date-detail" id="date-detail" />
+                <input type="time" class="form-control mt-3" name="time-detail" id="time-detail" />
+                <textarea id="note-detail" name="note-detail" placeholder="Add a note"></textarea>
+                <button class="save-detail" id="save-detail"><i class='bx bx-save' ></i>Save</button>
+            </div>
         </div>
     </div>
     
