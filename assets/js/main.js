@@ -27,5 +27,14 @@ el('.nav .close').addEventListener('click', (e) => {
 });
 
 $('.add-list-btn').on('click', (e) => {
-    
+    $('#add-list').modal('show');
+    $('.modal-content').css('cssText', `
+        box-shadow: 0px 0px 25px 3px #000;
+    `);
+    $('.modal-header').css('cssText', `
+        border-bottom: none !important;
+    `);
+    $('.modal-footer').css('cssText', `
+        border-top: none !important;
+    `);
 });
