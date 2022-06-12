@@ -12,6 +12,114 @@ body, html {
     overflow-x: hidden !important;
 }
 
+.btn-primary:not([disabled]):not(.disabled).active,
+.btn-primary:not([disabled]):not(.disabled):active,
+.btn-primary:not([disabled]):not(.disabled).hover,
+.btn-primary:not([disabled]):not(.disabled):hover{
+    color: #fff !important;
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+}
+
+.btn-secondary:not([disabled]):not(.disabled).active,
+.btn-secondary:not([disabled]):not(.disabled):active,
+.btn-secondary:not([disabled]):not(.disabled).hover,
+.btn-secondary:not([disabled]):not(.disabled):hover {
+    color: #fff !important;
+    background-color: #868e96 !important;
+    border-color: #868e96 !important;
+}
+
+.btn-success:not([disabled]):not(.disabled).active,
+.btn-success:not([disabled]):not(.disabled):active,
+.btn-success:not([disabled]):not(.disabled).hover,
+.btn-success:not([disabled]):not(.disabled):hover{
+    color: #fff !important;
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+}
+
+.btn-danger:not([disabled]):not(.disabled).active,
+.btn-danger:not([disabled]):not(.disabled):active,
+.btn-danger:not([disabled]):not(.disabled).hover,
+.btn-danger:not([disabled]):not(.disabled):hover {
+    color: #fff !important;
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+}
+
+.btn-warning:not([disabled]):not(.disabled).active,
+.btn-warning:not([disabled]):not(.disabled):active,
+.btn-warning:not([disabled]):not(.disabled).hover,
+.btn-warning:not([disabled]):not(.disabled):hover {
+    color: #111 !important;
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+}
+
+.btn-info:not([disabled]):not(.disabled).active,
+.btn-info:not([disabled]):not(.disabled):active,
+.btn-info:not([disabled]):not(.disabled).hover,
+.btn-info:not([disabled]):not(.disabled):hover {
+    color: #fff !important;
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+}
+
+.btn-light:not([disabled]):not(.disabled).active,
+.btn-light:not([disabled]):not(.disabled):active,
+.btn-light:not([disabled]):not(.disabled).hover,
+.btn-light:not([disabled]):not(.disabled):hover {
+    color: #111 !important;
+    background-color: #f8f9fa !important;
+    border-color: #f8f9fa !important;
+}
+
+.btn-dark:not([disabled]):not(.disabled).active,
+.btn-dark:not([disabled]):not(.disabled):active,
+.btn-dark:not([disabled]):not(.disabled).hover,
+.btn-dark:not([disabled]):not(.disabled):hover {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
+}
+
+.btn-link:not([disabled]):not(.disabled).active,
+.btn-link:not([disabled]):not(.disabled):active,
+.btn-link:not([disabled]):not(.disabled).hover,
+.btn-link:not([disabled]):not(.disabled):hover {
+    color: #007bff !important;
+}
+
+a:focus,
+a:hover, 
+.btn:focus,
+.btn:hover {
+    text-decoration: none !important;
+}
+
+input:active,
+input:focus,
+input:hover,
+input:visited,
+input.active,
+input.focus,
+input.hover,
+input.visited,
+button:active,
+button:focus,
+button:hover,
+button:visited,
+button.active,
+button.focus,
+button.hover,
+button.visited {
+    box-shadow: unset !important;
+    outline: 0 !important;
+    background: unset !important;
+    border-color: unset !important;
+}
+
 .header {
     display: flex;
     background: #C9CACC;
@@ -23,6 +131,7 @@ body, html {
     width: 100%;
     overflow: hidden;
     box-shadow: 0px 0px 5px #000;
+    -webkit-app-region: drag;
 }
 
 .header .appname {
@@ -70,12 +179,151 @@ body, html {
 
 .header .nav button.min {
     background: #00C400;
+    -webkit-app-region: no-drag;
 }
 
 .header .nav button.max {
     background: #F8B100;
+    -webkit-app-region: no-drag;
 }
 
 .header .nav button.close {
     background: #FB0000;
+    -webkit-app-region: no-drag;
+}
+
+.list {
+    background: transparent;
+    max-height: 90vh !important;
+    overflow-x: hidden;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.search-container {
+    margin: 0 !important;
+    border: 1px solid #C0C1C2;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.search-container span {
+    background: #C9CACD;
+}
+
+.search-container input {
+    background: #C9CACD;
+    border-left: 0;
+}
+
+.task-item-container {
+    margin: auto;
+    max-height: 50vh;
+    overflow-x: hidden;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    overflow: hidden;
+    max-height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.task .icon {
+    color: #006FF5;
+}
+
+.task .name {
+    margin-left: 5px;
+}
+
+.task .delete {
+    outline: none !important;
+    border: none !important;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    margin-top: 5px;
+    color: #DC3545;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.task .count {
+    margin-left: 5px;
+    color: #666669;
+}
+
+.task.active {
+    background: #D9D9DB;
+}
+
+.task:hover {
+    background: #D9D9DB;
+}
+
+.add-list-btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    width: fit-content;
+    color: #4F3BFF;
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.add-list-btn .icon {
+    margin-right: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+.tasks {
+    padding: 10px;
+}
+
+.tasks .head {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    min-height: 100px;
+    top: 0;
+    background: purple;
+    background-image: url('../img/task-header-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 10px 20px;
+    overflow: hidden;
+}
+
+.tasks .head .t-name {
+    color: #fff;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+.detail {
+    padding: 10px;
 }
