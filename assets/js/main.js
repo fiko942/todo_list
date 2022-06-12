@@ -38,3 +38,16 @@ $('.add-list-btn').on('click', (e) => {
         border-top: none !important;
     `);
 });
+
+$('.add-task').on('click', (e) => {
+    $('#add-task').modal('show');
+    $('.modal-content').css('cssText', `
+        box-shadow: 0px 0px 25px 3px #000;
+    `);
+    $('.modal-header').css('cssText', `
+        border-bottom: none !important;
+    `);
+    $('.modal-footer').css('cssText', `
+        border-top: none !important;
+    `);
+})
