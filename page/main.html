@@ -24,41 +24,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center mt-5">
             <div class="col-lg-3 list">
-                <div class="input-group mb-3 search-container">
-                    <span class="input-group-text" id="search1"><i class='bx bx-search-alt'></i></span>
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search1" autocomplete="off">
-                </div>
                 <div class="task-item-container mt-4 mb-2">
-                    <div class="task d-flex active">
-                        <i class='bx bxs-calendar-star icon' ></i>
-                        <span class="name">Metting</span>
-                        <button class="delete"><i class='bx bx-trash' ></i></button>
-                        <span class="count">0</span>
-                    </div>
-                    <div class="task d-flex">
-                        <i class='bx bxs-calendar-star icon' ></i>
-                        <span class="name">Course</span>
-                        <button class="delete"><i class='bx bx-trash' ></i></button>
-                        <span class="count">0</span>
-                    </div>
-                    <div class="task d-flex">
-                        <i class='bx bxs-calendar-star icon' ></i>
-                        <span class="name">Recruitment</span>
-                        <button class="delete"><i class='bx bx-trash' ></i></button>
-                        <span class="count">0</span>
-                    </div>
-                    <div class="task d-flex">
-                        <i class='bx bxs-calendar-star icon' ></i>
-                        <span class="name">Webinar</span>
-                        <button class="delete"><i class='bx bx-trash' ></i></button>
-                        <span class="count">0</span>
-                    </div>
-                    <div class="task d-flex">
-                        <i class='bx bxs-calendar-star icon' ></i>
-                        <span class="name">Trucatt Development</span>
-                        <button class="delete"><i class='bx bx-trash' ></i></button>
-                        <span class="count">0</span>
-                    </div>
                 </div>
                 <hr>
                 <div class="add-list-btn d-flex">
@@ -72,8 +38,8 @@
                 </div>
                 <div class="data">
                     <div class="list">
-                        <div class="title">Ngent0d</div>
-                        <div class="date"><i class='bx bx-calendar' ></i><span>26-09-2004</span><i class='bx bxs-watch'></i><span>12:00</span></div>
+                        <div class="title">KTS Recruitment</div>
+                        <div class="date"><i class='bx bx-calendar' ></i><span>15-06-2022</span><i class='bx bxs-watch'></i><span>12:00</span></div>
                     </div>
                 </div>
                 <div class="add-task d-flex align-items-center">
@@ -100,11 +66,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
+                <input type="text" class="form-control" id="list-name-add" placeholder="List name" />
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" id="submit-add-list">Add</button>
             </div>
             </div>
         </div>
@@ -112,24 +78,62 @@
 
     <!-- Modal Add Task -->
     <div class="modal" tabindex="-1" id="add-task">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-sm">
+        <form>
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md">
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">New task</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
+                <input type="text" class="form-control" id="task-name-add" placeholder="Task name" />
+                <input type="date" class="form-control mt-2" id="task-date-add" placeholder="Task date" required/>
+                <input type="time" class="form-control mt-2" id="task-time-add" placeholder="Task time" value="00:00" required/>
+                <textarea id="task-note-add" class="mt-2" placeholder="Add a note"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+            </div>
+        </div>
+        </form>
+    </div>
+
+    <!-- Modal Confirm -->
+    <div class="modal" tabindex="-1" id="confirm-delete-list">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-sm">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="confirm-delete-list-message"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary cancel" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary yes" id="continue-delete-list">Yes</button>
             </div>
             </div>
         </div>
     </div>
     <!-- /All Modal -->
-    
+
+    <!-- Toast Message -->
+    <div class="toast-container position-static">
+        <div class="toast" id="live-toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto toast-title">Bootstrap</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body toast-message">
+            Hello, world! This is a toast message.
+          </div>
+        </div>
+    </div>s
+    <!-- /Toast Message -->
+
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
 </body>
