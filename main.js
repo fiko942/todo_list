@@ -30,8 +30,6 @@ function sendListData() {
   var listData = settings.get('data.list');
   var taskData = settings.get('data.task');
 
-  console.log(taskData);
-
   var arr = [];
 
   for(let i = 0; i < listData.length; i++) { //list data
@@ -151,6 +149,7 @@ ipc.on('add-task', (e, data) => {
   }
   settings.set('data.task', taskBefore);
   win.webContents.send('message', ['Success', 'Task has been added successfully']);
+  sendListData();
 });
 
 ipc.on('open-list', (e, id) => {
