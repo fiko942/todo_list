@@ -65,10 +65,11 @@ app.on('window-all-closed', function () {
   }
 });
 
-require('electron-reload')(__dirname, {
-  electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
-  hardResetMethod: 'exit'
-});
+// UNCOMMENT CODE BELLOW ON DEVELOPMENT
+// require('electron-reload')(__dirname, {
+//   electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
+//   hardResetMethod: 'exit'
+// });
 
 function loadFile(filePath) {
   return win.loadFile(filePath);

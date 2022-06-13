@@ -7,7 +7,6 @@
     "asar": true,
     "appId": "your.id",
     "win": {
-      "icon": "./favicon.png",
       "target": ["nsis"]
     }
   },
