@@ -14,8 +14,10 @@ let win;
 function createWindow () {
   win = new BrowserWindow({
     frame: false,
-    width: 800,
-    height: 600,
+    width: 995,
+    height: 500,
+    minWidth: 995,
+    minHeight: 500,
     webPreferences: {
       contextIsolation: false,
       nodeIntegration: true,
