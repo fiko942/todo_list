@@ -26,6 +26,25 @@ function createWindow () {
 
 function sendListData() {
   win.webContents.send('list-data', settings.get('data.list'));
+  // Calculating data list
+  var listData = settings.get('data.list');
+  var taskData = settings.get('data.task');
+
+  console.log(taskData);
+
+  var arr = [];
+
+  for(let i = 0; i < listData.length; i++) { //list data
+    var tc = 0; //task count;
+    for(let j = 0; j < taskData.length; j++) { // task data
+      if(listData[i]['id'].toString().trim() === taskData[j]['list_id'].toString().trim()) {
+        tc++;
+      }
+    }
+    arr.push({list_id: listData[i]['id'], list_name: listData[i]['name'], count: tc});
+  }
+  win.webContents.send('count-data', arr);
+
 }
 
 app.whenReady().then(() => {
@@ -145,3 +164,16 @@ ipc.on('open-list', (e, id) => {
   win.webContents.send('after-open-list', arr);
 });
 
+
+ipc.on('delete-task', (e, id) => {
+  var arr = [];
+  var data = settings.get('data.task');
+  for(let i = 0; i < data.length; i++) {
+    if(data[i]['task_id'].toString().trim() !== id.toString().trim()) {
+      arr.push(data[i]);
+    }
+  }
+  settings.set('data.task', arr);
+  win.webContents.send('message', ['Success', 'Task has been deleted successfully']);
+  sendListData();
+});

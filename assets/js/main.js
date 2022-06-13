@@ -173,9 +173,10 @@ ipc.on('after-open-list', (e, data) => {
     if(data.length === 0) {
         $('.detail').addClass('nan');
         $('.detail textarea').val('');
+        $('.detail .task-name').text('');
+        deleteElementDeleteTask();
     }
     let listContainer = document.querySelector('.tasks .data');
-    console.log(data);
     if(listContainer !== undefined) {
         listContainer.innerHTML = '';
         for(let i = data.length - 1; i > -1; i--) {
@@ -188,18 +189,45 @@ ipc.on('after-open-list', (e, data) => {
             `;
             listContainer.appendChild(el);
             el.addEventListener('click', () => {
+                deleteElementDeleteTask();
                 openTask(data[i]['task_id']);
                 $('.detail textarea').val(data[i]['note']);
+                $('.detail .task-name').text('# ' + data[i]['name']);
                 document.querySelectorAll('.tasks .data .list.active').forEach(elelel => {
                     elelel.classList.remove('active');
                 });
                 el.classList.add('active');
+                // Create delete task button element
+                let del = document.createElement('button');
+                del.classList.add('delete');
+                del.innerHTML = `<i class='bx bxs-trash-alt' ></i>`;
+                del.addEventListener('click', () => {
+                    deleteTask(data[i]['task_id'], data[i]['name']);
+                });
+                document.querySelector('.detail .bottom').appendChild(del);
             });
         }
         if($('.tasks .data .list')[0] !== undefined) {
             $('.tasks .data .list')[0].click();
         }
     }
+});
+
+function deleteElementDeleteTask() {
+    if($('.detail .delete') !== undefined) {
+        $('.detail .delete').remove();
+    }
+}
+
+function deleteTask(id, name) {
+    dataTemp = id;
+    $("#confirm-delete-task").modal('show');
+    $("#confirm-delete-task #confirm-delete-task-message").text(`Are you sure to delete task: ${name} ?`);
+}
+
+$('#continue-delete-task').on('click', () => {
+    ipc.send('delete-task', dataTemp);
+    $('#confirm-delete-task').modal('hide');
 });
 
 function openTask(id) {
@@ -210,4 +238,12 @@ function openTask(id) {
 
 $("#note-detail").on('click', (e) => {
     e.preventDefault();
+});
+
+ipc.on('count-data', (e, data) => {
+    console.log(data);
+    for(let i = 0; i < data.length; i++) {
+        var c = (data[i]['count'] < 1) ? '' : data[i]['count']
+        $(`.task[list-id="${data[i]['list_id']}"] .count`).text(c);
+    }
 });
