@@ -43,11 +43,8 @@
                     <span>New task</span>
                 </div>
             </div>
-            <div class="col-lg-4 detail">
-                <input type="date" class="form-control" name="date-detail" id="date-detail" />
-                <input type="time" class="form-control mt-3" name="time-detail" id="time-detail" />
-                <textarea id="note-detail" name="note-detail" placeholder="Add a note"></textarea>
-                <button class="save-detail" id="save-detail"><i class='bx bx-save' ></i>Save</button>
+            <div class="col-lg-4 detail nan">
+                <textarea id="note-detail" name="note-detail" placeholder="Task note" readonly></textarea>
             </div>
         </div>
     </div>
@@ -85,7 +82,7 @@
                 <input type="text" class="form-control" id="task-name-add" placeholder="Task name" />
                 <input type="date" class="form-control mt-2" id="task-date-add" placeholder="Task date" required/>
                 <input type="time" class="form-control mt-2" id="task-time-add" placeholder="Task time" value="00:00" required/>
-                <textarea id="task-note-add" class="mt-2" placeholder="Add a note"></textarea>
+                <textarea id="task-note-add" class="mt-2" placeholder="Add a note (Optional)"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -5,6 +5,7 @@
 * {
     box-sizing: border-box;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    transition: 0.2s ease all;
 }
 
 body, html {
@@ -344,6 +345,10 @@ button.visited {
     border: 2px solid gray;
 }
 
+.tasks .data .list.active::before {
+    background: red;
+}
+
 .tasks .data .list {
     padding-top: 5px;
     padding-bottom: 5px;
@@ -420,7 +425,8 @@ button.visited {
     margin-bottom: 2px;
     height: 80vh;
     padding: 15px 30px;
-    overflow-x: hidden;
+    overflow: hidden;
+    transition: .5s ease all !important;
 }
 
 .detail textarea {
@@ -429,6 +435,7 @@ button.visited {
     outline: none !important;
     border: none !important;
     margin-top: 15px;
+    cursor:  default;
 }
 
 .save-detail {
@@ -459,4 +466,8 @@ button.visited {
 .save-detail.visited {
     box-shadow: 2px 2px 2px #343a40 !important;
     background: #006FF4 !important;
+}
+
+.detail.nan {
+    filter: blur(3px);
 }

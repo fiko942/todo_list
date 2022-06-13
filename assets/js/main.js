@@ -170,6 +170,10 @@ $('#add-task form').on('submit', (e) => {
 });
 
 ipc.on('after-open-list', (e, data) => {
+    if(data.length === 0) {
+        $('.detail').addClass('nan');
+        $('.detail textarea').val('');
+    }
     let listContainer = document.querySelector('.tasks .data');
     console.log(data);
     if(listContainer !== undefined) {
@@ -185,11 +189,25 @@ ipc.on('after-open-list', (e, data) => {
             listContainer.appendChild(el);
             el.addEventListener('click', () => {
                 openTask(data[i]['task_id']);
-            })
+                $('.detail textarea').val(data[i]['note']);
+                document.querySelectorAll('.tasks .data .list.active').forEach(elelel => {
+                    elelel.classList.remove('active');
+                });
+                el.classList.add('active');
+            });
+        }
+        if($('.tasks .data .list')[0] !== undefined) {
+            $('.tasks .data .list')[0].click();
         }
     }
 });
 
 function openTask(id) {
-    console.log(id);
+    if($('.detail.nan') !== undefined) {
+        $('.detail.nan').removeClass('nan');
+    }
 }
+
+$("#note-detail").on('click', (e) => {
+    e.preventDefault();
+});
