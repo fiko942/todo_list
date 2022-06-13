@@ -3,16 +3,18 @@
   "version": "1.0.0",
   "description": "A minimal Todo List for Windows",
   "main": "main.js",
+  "win": {
+    "icon": "./favicon.png"
+  },
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/fiko942/todo_list",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Todo List",
+    "Tobelsoft",
+    "Wiji Fiko Teren",
+    "Trucatt"
   ],
   "author": "Wiji Fiko Teren",
   "license": "CC0-1.0",

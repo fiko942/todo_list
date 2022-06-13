@@ -18,8 +18,10 @@ function createWindow () {
     height: 600,
     webPreferences: {
       contextIsolation: false,
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+      devTools: false
+    },
+    icon: './favicon.png'
   });
   win.loadFile('page/main.html');
 }
