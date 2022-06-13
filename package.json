@@ -3,11 +3,20 @@
   "version": "1.0.0",
   "description": "A minimal Todo List for Windows",
   "main": "main.js",
+  "build": {
+    "asar": true,
+    "appId": "your.id",
+    "win": {
+      "icon": "./favicon.png",
+      "target": ["nsis"]
+    }
+  },
   "win": {
-    "icon": "./favicon.png"
+    
   },
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
   "repository": "https://github.com/fiko942/todo_list",
   "keywords": [
