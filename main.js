@@ -126,10 +126,22 @@ ipc.on('delete-list', (e, data) => {
 });
 
 ipc.on('add-task', (e, data) => {
-  console.log(data);
+  var taskBefore = settings.get('data')['task'];
+  if(taskBefore != undefined) {
+    taskBefore.push(data);
+  }
+  settings.set('data.task', taskBefore);
+  win.webContents.send('message', ['Success', 'Task has been added successfully']);
 });
 
-ipc.on('open-task', (e, id) => {
-  console.log(id);
+ipc.on('open-list', (e, id) => {
+  let arr = [];
+  let data = settings.get('data.task');
+  for(let i = 0; i < data.length; i++) {
+    if(data[i]['list_id'].toString().trim() === id.toString().trim()) {
+      arr.push(data[i]);
+    }
+  }
+  win.webContents.send('after-open-list', arr);
 });
 

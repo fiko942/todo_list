@@ -119,8 +119,8 @@ ipc.on('list-data', (e, data) => {
                 document.querySelectorAll('.task-item-container .task').forEach(elel => { elel.classList.remove('active'); });
                 el.classList.add('active');
                 let id = (el.hasAttribute('task-id')) ? el.getAttribute('task-id') : '';
-                ipc.send('open-task', id);
-                console.log(id);
+                ipc.send('open-list', id);
+                $(".tasks .head .t-name").text($('.task.active').text());
             });
         });
 
@@ -141,13 +141,55 @@ $('#continue-delete-list').on('click', () => {
     $('#confirm-delete-list').modal('hide');
 });
 
+function randomString(length = 1) {
+  let allowedChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890____________';
+  let c = '';
+  for(let i = 0; i < length; i++) {
+    c += allowedChars[Math.floor(Math.random() * allowedChars.length)];
+  }
+  return c;
+}
+
 $('#add-task form').on('submit', (e) => {
     e.preventDefault();
-    let name = $("#task-name-add").val().trim();
+    let name = $("#task-name-add").val().trim().replace('<', '').replace('>', '').replace(';', '');
     let date = $('#task-date-add').val();
     let time = $("#task-time-add").val();
-    let note = $("#task-note-add").val().trim();
+    let note = $("#task-note-add").val().trim().replace('<', '').replace('>', '').replace(';', '');
     let list_id = $(".task.active").attr('list-id');
-    let data = {name, date, time, note, list_id};
+    let task_id = randomString(50);
+    if(name.length < 1) {
+        showNotification('Canceled', 'Enter name cahracters length more than 0');
+    } else if(name.length > 60) {
+        showNotification('Canceled', 'Enter name characters length less than 61');
+    }
+    let data = {name, date, time, note, list_id, task_id};
     ipc.send('add-task', data);
+    $("#add-task").modal('hide');
+    $(".task.active").click();
 });
+
+ipc.on('after-open-list', (e, data) => {
+    let listContainer = document.querySelector('.tasks .data');
+    console.log(data);
+    if(listContainer !== undefined) {
+        listContainer.innerHTML = '';
+        for(let i = data.length - 1; i > -1; i--) {
+            let el = document.createElement('div');
+            el.classList.add('list');
+            el.setAttribute('task-id', data[i]['task_id']);
+            el.innerHTML = `
+                    <div class="title">${data[i]['name']}</div>
+                    <div class="date"><i class='bx bx-calendar' ></i><span>${data[i]['date']}</span><i class='bx bxs-watch'></i><span>${data[i]['time']}</span></div>
+            `;
+            listContainer.appendChild(el);
+            el.addEventListener('click', () => {
+                openTask(data[i]['task_id']);
+            })
+        }
+    }
+});
+
+function openTask(id) {
+    console.log(id);
+}
